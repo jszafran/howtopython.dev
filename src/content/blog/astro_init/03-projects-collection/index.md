@@ -4,6 +4,7 @@ description: "How to add projects to your portfolio."
 date: "2024-03-20"
 tags:
   - tutorial
+draft: true
 ---
 
 ---
@@ -18,6 +19,7 @@ The `projects` collections is found in `src/content/projects`.
       └── 📄 index.md
 └── 📁 project-2
       └── 📄 index.mdx
+  
 ```
 
 In the above example, two project posts will be generated with the folder name representing the id.
