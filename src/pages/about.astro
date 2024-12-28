@@ -2,9 +2,9 @@
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import { SITE, ABOUT } from "@consts";
-import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
 import { getCollection } from "astro:content";
+import { SOCIALS } from "../consts";
 
 const blog = (await getCollection("blog"))
   .filter((post) => !post.data.draft)
@@ -24,16 +24,47 @@ const blog = (await getCollection("blog"))
           <article class="space-y-4">
             <span>
               <p>
-                Hi, my name is Kuba
+                Hi, my name is Kuba, I am a self-taught software developer. My professional experience is a blend of data and backend engineering roles.
               </p>
-            </span>
-            <span class="animate">
-              <p>
-                About me.
-              </p>
-
+              <p>I share my free time between my family, electric guitar and gym.</p>
             </span>
           </article>
+        </section>
+
+                <section class="animate space-y-4">
+          <h2 class="font-semibold text-black dark:text-white">
+            Let's Connect
+          </h2>
+          <article>
+            <p>
+              If you want to get in touch with me about something or just to say
+              hi, reach out on social media or send me an email.
+            </p>
+          </article>
+          <ul class="not-prose flex flex-wrap gap-2">
+            {
+              SOCIALS.map((SOCIAL) => (
+                <li class="flex gap-x-2 text-nowrap">
+                  <Link
+                    href={SOCIAL.HREF}
+                    external
+                    aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`}
+                  >
+                    {SOCIAL.NAME}
+                  </Link>
+                  {"/"}
+                </li>
+              ))
+            }
+            <li class="line-clamp-1">
+              <Link
+                href={`mailto:${SITE.EMAIL}`}
+                aria-label={`Email ${SITE.TITLE}`}
+              >
+                {SITE.EMAIL}
+              </Link>
+            </li>
+          </ul>
         </section>
       </div>
     </aside>
